@@ -1,103 +1,101 @@
-import Image from "next/image";
+import { Github, Linkedin, Mail } from "lucide-react";
+import Link from "next/link";
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="animate-fadeInLeft duration-1000 ease-out">
+      <div className="min-h-screen flex flex-col justify-center text-gray-800 bg-[#fdfcfa] px-6 py-12 md:px-12 md:py-20 relative overflow-hidden">
+        
+        {/* Colorful background blob */}
+        <div className="absolute -top-32 -left-32 w-96 h-96 bg-gradient-to-br from-pink-200 via-purple-200 to-blue-200 rounded-full opacity-40 blur-3xl z-0 animate-pulse"></div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+        {/* Grid overlay */}
+        <div className="absolute inset-0 pointer-events-none z-0">
+          <div className="w-full h-full grid grid-cols-12 gap-0">
+            {[...Array(12)].map((_, i) => (
+              <div key={i} className="border-r border-gray-200"></div>
+            ))}
+          </div>
+          <div className="absolute inset-0 grid grid-rows-12 gap-0">
+            {[...Array(12)].map((_, i) => (
+              <div key={i} className="border-b border-gray-200"></div>
+            ))}
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+        {/* Right vertical buttons (Desktop only) */}
+        <div className="hidden md:flex flex-col justify-center space-y-16 absolute right-6 inset-y-0 z-10 animate-fadeInRight delay-500">
+          {[
+            { icon: <Mail size={18} />, text: "Summon Me", href: "mailto:pavanpakhare808@gmail.com" },
+            { icon: <Github size={18} />, text: "Dark Lair", href: "https://github.com/pavanpakhare" },
+            { icon: <Linkedin size={18} />, text: "Alter Ego", href: "https://www.linkedin.com/in/pavan-pakhare" },
+            { icon: "💬", text: "About", href: "/about", isLink: true },
+          ].map(({ icon, text, href, isLink }, i) =>
+            isLink ? (
+              <Link
+                href={href}
+                key={i}
+                className="inline-flex items-center gap-2 px-4 py-2 hover:bg-gray-100 transition min-w-[150px] transform -rotate-90 origin-right"
+              >
+                {icon} {text}
+              </Link>
+            ) : (
+              <a
+                href={href}
+                key={i}
+                target="_blank"
+                className="inline-flex items-center gap-2 px-4 py-2 hover:bg-gray-100 transition min-w-[150px] transform -rotate-90 origin-right"
+              >
+                {icon} {text}
+              </a>
+            )
+          )}
+        </div>
+
+        {/* Main content */}
+        <div className="max-w-3xl w-full mx-auto md:mx-0 md:ml-12 z-10 animate-fadeInLeft delay-300">
+          <h1 className="text-2xl md:text-3xl font-light mb-2">Greetings, digital wanderer.</h1>
+          <h2 className="text-5xl md:text-6xl font-bold mb-4">I'm Pavan*</h2>
+          <p className="text-base md:text-lg text-gray-600 mb-6">
+            *Just another caffeine-powered code sorcerer conjuring full-stack web spells from the mystical lands of Maharashtra. Fluent in Java, React, Spring Boot, and sarcastic remarks. I turn pizza into software and bugs into "features."
+          </p>
+
+          {/* Buttons for mobile */}
+          <div className="flex md:hidden flex-wrap justify-center gap-4 mb-6 animate-fadeInUp delay-500">
+            <a
+              href="mailto:pavanpakhare808@gmail.com"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-md hover:bg-gray-100 transition"
+            >
+              <Mail size={18} /> Summon Me
+            </a>
+            <a
+              href="https://github.com/pavanpakhare"
+              target="_blank"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-md hover:bg-gray-100 transition"
+            >
+              <Github size={18} /> Dark Lair
+            </a>
+            <a
+              href="https://www.linkedin.com/in/pavan-pakhare"
+              target="_blank"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-md hover:bg-gray-100 transition"
+            >
+              <Linkedin size={18} /> Alter Ego
+            </a>
+            <Link
+              href="/about"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-md hover:bg-gray-100 transition"
+            >
+              💬 About
+            </Link>
+          </div>
+
+          <div className="text-sm text-gray-500 animate-fadeIn delay-700">
+            Available for freelance wizardry or full-time questing. No dragons, please.
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
+
