@@ -26,9 +26,9 @@ export default function HomePage() {
         {/* Right vertical buttons (Desktop only) */}
         <div className="hidden md:flex flex-col justify-center space-y-16 absolute right-6 inset-y-0 z-10 animate-fadeInRight delay-500">
           {[
-            { icon: <Mail size={18} />, text: "Summon Me", href: "mailto:pavanpakhare808@gmail.com" },
-            { icon: <Github size={18} />, text: "Dark Lair", href: "https://github.com/pavanpakhare" },
-            { icon: <Linkedin size={18} />, text: "Alter Ego", href: "https://www.linkedin.com/in/pavan-pakhare" },
+            { icon: <Mail size={18} />, text: "Mail", href: "mailto:pavanpakhare808@gmail.com" },
+            { icon: <Github size={18} />, text: "Github", href: "https://github.com/pavanpakhare" },
+            { icon: <Linkedin size={18} />, text: "Linkedin", href: "https://www.linkedin.com/in/pavan-pakhare" },
             { icon: "💬", text: "About", href: "/about", isLink: true },
           ].map(({ icon, text, href, isLink }, i) =>
             isLink ? (
@@ -84,7 +84,7 @@ export default function HomePage() {
             </a>
             <Link
               href="/about"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-md hover:bg-gray-100 transition"
+              className="inline-flex items-center gap- px-4 py-2 rounded-md hover:bg-gray-100 transition"
             >
               💬 About
             </Link>
